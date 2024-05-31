@@ -41,6 +41,7 @@ echo "basitdagitim/other-bps-binary-packages">>$rootfs/etc/bps/sources.list
 #echo "basitdagitim/debian-bps-binary-packages">>$rootfs/etc/bps/sources.list
 echo "basitdagitim/x11-bps-binary-packages">>$rootfs/etc/bps/sources.list
 echo "basitdagitim/lxde-bps-binary-packages">>$rootfs/etc/bps/sources.list
+echo "basitdagitim/cinnamon-bps-binary-packages">>$rootfs/etc/bps/sources.list
 echo "anadolulinux/lfs-binary-packages">>$rootfs/etc/bps/sources.list
 
 ### installing bps package in rootfs
@@ -66,7 +67,7 @@ $rootfs/bin/bps -ri util-linux $rootfs
 $rootfs/bin/bps -ri openrc $rootfs
 
 
-for paket in kbd libpcre2 busybox \
+for paket in rsync kbd libpcre2 busybox \
 		linux-image linux-headers linux-libc-dev libc6-dev libstdc++-dev live-boot live-config \
 		parted dosfstools kmod grub \
 		zstd  brotli expat libmd eudev findutils pam \
@@ -80,6 +81,7 @@ do
 chroot $rootfs /bin/bps -i $paket; 
 #$rootfs/bin/bps -ri  $paket $rootfs
 done
+
 #glib-> libffi
 #gtk3 ->glib gdk_pixbuf harfbuzz fontconfig
 #update-mime-database-> gcc 
