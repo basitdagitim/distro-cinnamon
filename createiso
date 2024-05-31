@@ -89,7 +89,20 @@ do
 chroot $rootfs /bin/bps -i $paket; 
 done
 
-for paket in base,libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-base,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring
+chroot $rootfs /bin/bps -i x11-base-base
+chroot $rootfs /bin/bps -i x11-driver-base
+chroot $rootfs /bin/bps -i x11-libs-base
+chroot $rootfs /bin/bps -i font-base
+chroot $rootfs /bin/bps -i mesa
+chroot $rootfs /bin/bps -i llvm
+chroot $rootfs /bin/bps -i cinnamon-base
+chroot $rootfs /bin/bps -i gobject-introspection
+chroot $rootfs /bin/bps -i gstreamer
+chroot $rootfs /bin/bps -i gsettings-desktop-schemas
+chroot $rootfs /bin/bps -i py3-base
+chroot $rootfs /bin/bps -i networkmanager
+
+for paket in libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring
 do
 chroot $rootfs /bin/bps -i $paket; 
 done
