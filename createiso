@@ -101,11 +101,11 @@ chroot $rootfs /bin/bps -i py3-base
 chroot $rootfs /bin/bps -i networkmanager
 chroot $rootfs /bin/bps -i openssh
 
-for paket in libvorbis,libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring
+for paket in libvorbis,libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring,gnome-backgrounds
 do
 chroot $rootfs /bin/bps -i $paket; 
 done
-
+#dil ayarını en son yapıyoruz
 chroot $rootfs /bin/bps -i locale-tr
 
 ### update-initrd
