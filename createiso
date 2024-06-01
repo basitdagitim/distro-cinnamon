@@ -72,11 +72,9 @@ for paket in rsync kbd libpcre2 busybox \
 		parted dosfstools kmod grub \
 		zstd  brotli expat libmd eudev findutils pam \
 		e2fsprogs \gzip \gawk initramfs-tools zlib audit  \
-		 xz-utils libxml2 libselinux 
+		 xz-utils libxml2 libselinux nano
 #libsepol libsemanage mcstrans 
-#
 do
-#kmod eudev grup openrc pam
 chroot $rootfs /bin/bps -i $paket; 
 #$rootfs/bin/bps -ri  $paket $rootfs
 done
@@ -86,7 +84,7 @@ done
 #update-mime-database-> gcc 
 for paket in libffi fribidi freetype atkmm libepoxy glib fontconfig \gcc gdk-pixbuf harfbuzz shadow openbox gtk3 libjpeg-turbo dbus polkit elogind shared-mime-info
 do
-chroot $rootfs /bin/bps -i $paket; 
+chroot $rootfs /bin/bps -i $paket
 done
 
 chroot $rootfs /bin/bps -i x11-base-base
@@ -101,11 +99,15 @@ chroot $rootfs /bin/bps -i gstreamer
 chroot $rootfs /bin/bps -i gsettings-desktop-schemas
 chroot $rootfs /bin/bps -i py3-base
 chroot $rootfs /bin/bps -i networkmanager
+chroot $rootfs /bin/bps -i openssh
 
-for paket in libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring
+for paket in libvorbis,libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring
 do
 chroot $rootfs /bin/bps -i $paket; 
 done
+
+chroot $rootfs /bin/bps -i locale-tr
+
 ### update-initrd
 fname=$(basename $rootfs/boot/config*)
 kversion=${fname:7}
