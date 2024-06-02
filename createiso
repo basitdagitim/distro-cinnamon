@@ -66,8 +66,17 @@ $rootfs/bin/bps -ri libpcre2 $rootfs
 $rootfs/bin/bps -ri coreutils $rootfs
 $rootfs/bin/bps -ri util-linux $rootfs
 $rootfs/bin/bps -ri openrc $rootfs
-#$rootfs/bin/bps -ri kbd $rootfs
-chroot $rootfs /bin/bps -i distro-base
+#chroot $rootfs /bin/bps -i distro-base
+for paket in rsync kbd libpcre2 busybox \
+		linux-image linux-headers linux-libc-dev libc6-dev libstdc++-dev live-boot live-config \
+		parted dosfstools kmod grub \
+		zstd  brotli expat libmd eudev findutils pam \
+		e2fsprogs \gzip \gawk initramfs-tools zlib audit  \
+		 xz-utils libxml2  libselinux 
+do
+chroot $rootfs /bin/bps -i $paket; 
+done
+
 chroot $rootfs /bin/bps -i x11-base-base
 chroot $rootfs /bin/bps -i shadow
 chroot $rootfs /bin/bps -i x11-driver-base
