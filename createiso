@@ -82,7 +82,7 @@ done
 #update-mime-database-> gcc 
 for paket in libffi fribidi freetype atkmm libepoxy glib fontconfig \gcc gdk-pixbuf harfbuzz shadow openbox gtk3 libjpeg-turbo dbus polkit elogind shared-mime-info
 do
-chroot $rootfs /bin/bps -i $paket
+chroot $rootfs /bin/bps -i $paket;
 done
 
 chroot $rootfs /bin/bps -i x11-base-base
@@ -99,10 +99,11 @@ chroot $rootfs /bin/bps -i py3-base
 chroot $rootfs /bin/bps -i networkmanager
 chroot $rootfs /bin/bps -i openssh
 
-for paket in libvorbis,libxcb,libXau,libXdmcp,libXfont,libXfont2,libfontenc,freetype,libxshmfence,libdrm,libpciaccess,cinnamon-base,libcanberra,libogg,tdb,libexif,cups,libpulse,libgnomekbd,lcms2,libiconv,exempi,libdbusmenu,networkmanager,libnma,nm-applet,nspr,libgcrypt,py3-pygobject,graphene,pipewire,vulkan-loader,gsound,libsoup2,timezonemap,gnutls,accountsservice,colord,libassuan,e2fsprogs,keyutils,libkeybinder3,udisks2,gnome-keyring,gnome-backgrounds,gnome-terminal
+for paket in libvorbis libxcb libXau libXdmcp libXfont libXfont2 libfontenc freetype libxshmfence libdrm libpciaccess cinnamon-base libcanberra libogg tdb libexif cups libpulse libgnomekbd lcms2 libiconv exempi libdbusmenu networkmanager libnma nm-applet nspr libgcrypt py3-pygobject graphene pipewire vulkan-loader gsound libsoup2 timezonemap gnutls accountsservice colord libassuan e2fsprogs keyutils libkeybinder3 udisks2 gnome-keyring gnome-backgrounds gnome-terminal
 do
-chroot $rootfs /bin/bps -i $paket; 
+chroot $rootfs /bin/bps -i $paket;
 done
+
 #dil ayarını en son yapıyoruz
 chroot $rootfs /bin/bps -i locale-tr
 chroot $rootfs /bin/install-remove-to-do
