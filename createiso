@@ -50,7 +50,23 @@ $rootfs/bin/bps -u $rootfs
 echo root:x:0:0:root:/root:/bin/sh > $rootfs/etc/passwd 
 chmod 755 $rootfs/etc/passwd
 #**********************************************************************
-chroot $rootfs /bin/bps -i distro-core-base
+#chroot $rootfs /bin/bps -i distro-core-base
+$rootfs/bin/bps -ri glibc $rootfs
+$rootfs/bin/bps -ri readline $rootfs
+$rootfs/bin/bps -ri ncurses $rootfs
+$rootfs/bin/bps -ri \bash $rootfs
+$rootfs/bin/bps -ri openssl $rootfs
+$rootfs/bin/bps -ri acl $rootfs
+$rootfs/bin/bps -ri attr $rootfs
+$rootfs/bin/bps -ri libcap $rootfs
+$rootfs/bin/bps -ri gmp $rootfs
+$rootfs/bin/bps -ri \grep $rootfs
+$rootfs/bin/bps -ri \sed $rootfs
+$rootfs/bin/bps -ri libpcre2 $rootfs
+$rootfs/bin/bps -ri coreutils $rootfs
+$rootfs/bin/bps -ri util-linux $rootfs
+$rootfs/bin/bps -ri openrc $rootfs
+#$rootfs/bin/bps -ri kbd $rootfs
 chroot $rootfs /bin/bps -i distro-base
 chroot $rootfs /bin/bps -i x11-base-base
 chroot $rootfs /bin/bps -i shadow
