@@ -1,2 +1,2 @@
 # Basitdagitim
-cinnamon iso
+cinnamon iso end user
