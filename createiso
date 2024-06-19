@@ -118,7 +118,8 @@ cd $rootfs/sbin
 rm init
 ln -s openrc-init init
 cd -
-
+chroot $rootfs adduser -D -s /bin/sh live -h /home/live
+chroot $rootfs echo -e "live\nlive\n"|chroot $rootfs passwd live
 
 ### update-initrd
 fname=$(basename $rootfs/boot/config*)
@@ -150,7 +151,7 @@ mv $distro/filesystem.squashfs $distro/iso/live/filesystem.squashfs
 
 
 echo 'menuentry "Disk GNU/Linux 64-bit" --class liveiso  {' > $distro/iso/boot/grub/grub.cfg
-echo '    linux /boot/vmlinuz boot=live net.ifnames=0 biosdevname=0 init=/bin/initdisk ' >> $distro/iso/boot/grub/grub.cfg
+echo '    linux /boot/vmlinuz boot=live net.ifnames=0 biosdevname=0' >> $distro/iso/boot/grub/grub.cfg
 echo '    initrd /boot/initrd.img' >> $distro/iso/boot/grub/grub.cfg
 echo '}' >> $distro/iso/boot/grub/grub.cfg
 
