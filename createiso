@@ -114,13 +114,19 @@ chroot $rootfs /bin/bps -i libgpg-error
 #dil ayarını en son yapıyoruz
 chroot $rootfs /bin/bps -i locale-tr
 chroot $rootfs /bin/install-remove-to-do
+
+###live config işlemleri yapılıyor
 cd $rootfs/sbin
 rm init
 ln -s openrc-init init
 cd -
-chroot $rootfs adduser -D -s /bin/sh live -h /home/live
+chroot $rootfs useradd live -m -s /bin/sh  -d /home/live
 chroot $rootfs echo -e "live\nlive\n"|chroot $rootfs passwd live
 
+for grp in tty wheel cdrom audio dip video plugdev netdev; do
+    chroot $rootfs usermod -aG $grp live || true
+done
+chroot $rootfs echo -e "1\n1\n"|chroot $rootfs passwd root
 ### update-initrd
 fname=$(basename $rootfs/boot/config*)
 kversion=${fname:7}
