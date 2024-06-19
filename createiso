@@ -114,6 +114,11 @@ chroot $rootfs /bin/bps -i libgpg-error
 #dil ayarını en son yapıyoruz
 chroot $rootfs /bin/bps -i locale-tr
 chroot $rootfs /bin/install-remove-to-do
+cd $rootfs/sbin
+rm init
+ln -s openrc-init init
+cd -
+
 
 ### update-initrd
 fname=$(basename $rootfs/boot/config*)
