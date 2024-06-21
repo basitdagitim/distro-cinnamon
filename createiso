@@ -110,7 +110,7 @@ chroot $rootfs /bin/bps -i lightdm
 chroot $rootfs /bin/bps -i lightdm-gtk-greeter
 chroot $rootfs /bin/bps -i lightdm-pardus-greeter
 chroot $rootfs /bin/bps -i libgpg-error
-chroot $rootfs /bin/bps -i 17g
+chroot $rootfs /bin/bps -i live-installer
 
 #dil ayarını en son yapıyoruz
 chroot $rootfs /bin/bps -i locale-tr
@@ -147,8 +147,7 @@ mkdir -p $distro/iso/boot
 mkdir -p $distro/iso/boot/grub
 mkdir -p $distro/iso/live || true
 
-#### Copy kernel and initramfs (Debian/Devuan)
-
+#### Copy kernel and initramfs
 cp -pf $rootfs/boot/initrd.img-* $distro/iso/boot/initrd.img
 cp -pf $rootfs/boot/vmlinuz-* $distro/iso/boot/vmlinuz
 rm -rf $rootfs/boot
@@ -159,7 +158,7 @@ mv $distro/filesystem.squashfs $distro/iso/live/filesystem.squashfs
 #### Write grub.cfg
 
 
-echo 'menuentry "Disk GNU/Linux 64-bit" --class liveiso  {' > $distro/iso/boot/grub/grub.cfg
+echo 'menuentry "Canli(live) GNU/Linux 64-bit" --class liveiso  {' > $distro/iso/boot/grub/grub.cfg
 echo '    linux /boot/vmlinuz boot=live net.ifnames=0 biosdevname=0' >> $distro/iso/boot/grub/grub.cfg
 echo '    initrd /boot/initrd.img' >> $distro/iso/boot/grub/grub.cfg
 echo '}' >> $distro/iso/boot/grub/grub.cfg
